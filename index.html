@@ -1,1 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To the girl from Room 213 ♡</title>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #3b0b13;
+    color: #fff8ef;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+#opening {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background:
+        radial-gradient(circle at 50% 40%, #741f2c 0%, #3b0b13 45%, #1d0509 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+#opening.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.opening-content {
+    width: 90%;
+    max-width: 600px;
+    animation: fadeUp 1.5s ease;
+}
+
+.small-title {
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 4px;
+    font-size: 11px;
+    opacity: .7;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.opening-content h1 {
+    font-size: clamp(45px, 11vw, 90px);
+    font-weight: 400;
+    line-height: .9;
+    font-style: italic;
+}
+
+.opening-content p {
+    font-size: 20px;
+    margin: 28px 0 38px;
+    opacity: .85;
+}
+
+.open-btn {
+    border: 1px solid rgba(255,255,255,.5);
+    background: rgba(255,255,255,.08);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.open-btn:hover {
+    background: white;
+    color: #3b0b13;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    display: none;
+}
+
+main.show {
+    display: block;
+}
+
+.page {
+    min-height: 100vh;
+    padding: 70px 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.paper {
+    background: #f7eadb;
+    color: #3b1820;
+    width: min(1000px, 100%);
+    min-height: 620px;
+    padding: clamp(35px, 7vw, 80px);
+    position: relative;
+    box-shadow: 0 25px 70px rgba(0,0,0,.4);
+    overflow: hidden;
+}
+
+.paper::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(100,35,45,.16);
+    pointer-events: none;
+}
+
+.page-number {
+    position: absolute;
+    top: 28px;
+    right: 35px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    opacity: .45;
+}
+
+.tape {
+    position: absolute;
+    width: 110px;
+    height: 30px;
+    background: rgba(226,178,170,.55);
+    transform: rotate(-5deg);
+    top: 18px;
+    left: 40%;
+}
+
+/* =========================
+   PAGE 1
+========================= */
+
+.room-number {
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 5px;
+    font-size: 12px;
+    opacity: .6;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.page h2 {
+    font-size: clamp(42px, 8vw, 75px);
+    font-weight: 400;
+    text-align: center;
+    font-style: italic;
+    line-height: 1;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 21px;
+    margin-top: 18px;
+}
+
+.story {
+    max-width: 650px;
+    margin: 40px auto 0;
+    font-size: 20px;
+    line-height: 1.65;
+    text-align: center;
+}
+
+.highlight {
+    font-style: italic;
+    font-size: 25px;
+}
+
+/* =========================
+   MEMORY GRID
+========================= */
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    margin-top: 45px;
+}
+
+.polaroid {
+    background: white;
+    padding: 10px 10px 35px;
+    box-shadow: 0 12px 25px rgba(0,0,0,.18);
+    transform: rotate(-2deg);
+    transition: .5s;
+}
+
+.polaroid:nth-child(2) {
+    transform: rotate(3deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0) translateY(-8px);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.polaroid p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* =========================
+   NIGHT PAGE
+========================= */
+
+.dark-page {
+    background: #1b080d;
+    color: #f8e8d9;
+}
+
+.dark-page .paper {
+    background: #241017;
+    color: #f8e8d9;
+}
+
+.clock {
+    font-family: 'DM Mono', monospace;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 4px;
+    opacity: .6;
+    margin-bottom: 25px;
+}
+
+.night-text {
+    max-width: 650px;
+    margin: 35px auto;
+    text-align: center;
+    font-size: 21px;
+    line-height: 1.8;
+}
+
+/* =========================
+   OBJECTS
+========================= */
+
+.object-page {
+    text-align: center;
+}
+
+.object {
+    margin: 40px auto;
+    max-width: 350px;
+    background: white;
+    padding: 12px 12px 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.2);
+    transform: rotate(-2deg);
+}
+
+.object img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+}
+
+.object-caption {
+    margin-top: 12px;
+    font-size: 19px;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-wrap {
+    max-width: 650px;
+    margin: 40px auto;
+    background: #21070c;
+    padding: 12px;
+    box-shadow: 0 20px 45px rgba(0,0,0,.3);
+}
+
+.video-wrap video {
+    width: 100%;
+    display: block;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    max-width: 700px;
+    margin: 45px auto;
+    background: #fffaf1;
+    padding: 45px;
+    color: #3d2026;
+    box-shadow: 0 18px 35px rgba(0,0,0,.2);
+    transform: rotate(1deg);
+    line-height: 1.8;
+    font-size: 20px;
+}
+
+.letter-title {
+    text-align: center;
+    font-style: italic;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+    background:
+        radial-gradient(circle at center, #741f2c, #350910 70%);
+    text-align: center;
+}
+
+.final .paper {
+    background: transparent;
+    color: #fff8ef;
+    box-shadow: none;
+}
+
+.twenty {
+    font-size: clamp(110px, 25vw, 240px);
+    line-height: .7;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.final-message {
+    max-width: 650px;
+    margin: 50px auto;
+    font-size: 23px;
+    line-height: 1.7;
+}
+
+.final-message strong {
+    font-size: 29px;
+    font-weight: 500;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.next {
+    display: block;
+    margin: 50px auto 0;
+    border: none;
+    background: #70202d;
+    color: white;
+    padding: 13px 28px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: .3s;
+}
+
+.next:hover {
+    transform: translateY(-3px);
+}
+
+.music-note {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 50;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.4);
+    background: rgba(30,5,10,.7);
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade {
+    animation: fadeUp 1.2s ease both;
+}
+
+@media(max-width: 650px) {
+
+    .page {
+        padding: 30px 15px;
+    }
+
+    .paper {
+        padding: 50px 25px;
+    }
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .polaroid img {
+        height: 230px;
+    }
+
+    .letter {
+        padding: 30px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<section id="opening">
+
+    <div class="opening-content">
+
+        <div class="small-title">
+            a little birthday surprise
+        </div>
+
+        <h1>
+            To the girl<br>
+            from Room 213…
+        </h1>
+
+        <p>
+            I made you a little place<br>
+            for some of our memories.
+        </p>
+
+        <button class="open-btn" onclick="openBook()">
+            Open your memory book ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio id="music" preload="auto">
+    <source src="Neeyum-Naanum.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-note" id="musicButton" onclick="toggleMusic()">♫</button>
+
+
+<main id="book">
+
+<!-- PAGE 1 -->
+
+<section class="page">
+
+<div class="paper fade">
+
+<div class="page-number">01 / 08</div>
+<div class="tape"></div>
+
+<div class="room-number">
+ROOM 213 · 11TH GRADE
+</div>
+
+<h2>
+Before you became my person…
+</h2>
+
+<p class="subtitle">
+you were just the girl who cried every morning.
+</p>
+
+<div class="story">
+
+<p>
+Our first hostel experience.
+Ten girls from different places.
+One room.
+And somehow, you were the girl I noticed.
+</p>
+
+<br>
+
+<p>
+Every morning I'd come back after my bath
+and everyone would be somewhere around the bathroom…
+</p>
+
+<p class="highlight">
+…but you would still be sitting on your lower bed,
+crying because you missed home.
+</p>
+
+<br>
+
+<p>
+That was my very first picture of you.
+Not a photograph.
+Just a memory.
+</p>
+
+</div>
+
+<button class="next"
+onclick="document.getElementById('page2').scrollIntoView({behavior:'smooth'})">
+Turn the page →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+
+<div class="paper">
+
+<div class="page-number">02 / 08</div>
+
+<div class="room-number">
+12TH GRADE
+</div>
+
+<h2>
+And then… we became us.
+</h2>
+
+<p class="story">
+
+Same room.
+Same person.
+Completely different friendship.
+
+<br><br>
+
+I annoyed you.
+You shouted at me.
+We fought over the most ridiculous things.
+I got possessive over absolutely nothing.
+
+<br><br>
+
+And somehow,
+between all of that,
+you became one of the most important people in my life.
+
+</p>
+
+<div class="memory-grid">
+
+<div class="polaroid">
+<img src="IMG-20250530_165610.jpg">
+<p>The tiny ponytail incident. 😂</p>
+</div>
+
+<div class="polaroid">
+<img src="IMG-20250711-WA0002.jpg">
+<p>One of the little things we kept. 👆🏻</p>
+</div>
+
+</div>
+
+<p class="story">
+
+And yes…
+
+<br>
+
+<span class="highlight">
+I still remember writing “Deepa”
+instead of “deep water” in an exam
+and then desperately striking it out.
+</span>
+
+<br><br>
+
+Apparently your name had already occupied
+too much space in my brain. 😭
+
+</p>
+
+<button class="next"
+onclick="document.getElementById('page3').scrollIntoView({behavior:'smooth'})">
+Next memory →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="page dark-page" id="page3">
+
+<div class="paper">
+
+<div class="page-number">03 / 08</div>
+
+<div class="clock">
+02:00 AM · 3RD FLOOR → GROUND FLOOR
+</div>
+
+<h2>
+That night.
+</h2>
+
+<div class="night-text">
+
+<p>
+One night you woke me up because
+your head was hurting badly.
+</p>
+
+<br>
+
+<p>
+We went all the way down to the sick room.
+And when we came back,
+I stayed awake until you fell asleep.
+</p>
+
+<br>
+
+<p>
+It wasn't some dramatic moment.
+There was no big conversation.
+</p>
+
+<br>
+
+<p class="highlight">
+I just remember realising
+how much you meant to me.
+</p>
+
+<br>
+
+<p>
+Maybe that was the night
+I stopped thinking of you as
+just my roommate.
+</p>
+
+</div>
+
+<button class="next"
+onclick="document.getElementById('page4').scrollIntoView({behavior:'smooth'})">
+Keep going →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section class="page" id="page4">
+
+<div class="paper object-page">
+
+<div class="page-number">04 / 08</div>
+
+<h2>
+The things I kept.
+</h2>
+
+<p class="subtitle">
+Some things are tiny.
+They still carry entire memories.
+</p>
+
+<div class="object">
+
+<img src="IMG-20250207_224146.jpg">
+
+<div class="object-caption">
+The little pink keychain you gave me. 🎀
+</div>
+
+</div>
+
+<p class="story">
+
+I left the hostel three days before everyone else.
+I asked you to help me pack.
+
+<br><br>
+
+You said:
+
+<br>
+
+<span class="highlight">
+“I am going to sleep.”
+</span>
+
+<br><br>
+
+Mean girl. 😭
+
+<br><br>
+
+But then you gave me this.
+And you hugged me.
+
+<br><br>
+
+And I saw the water in your eyes.
+
+</p>
+
+<button class="next"
+onclick="document.getElementById('page5').scrollIntoView({behavior:'smooth'})">
+There is more →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 5 -->
+
+<section class="page">
+
+<div class="paper object-page">
+
+<div class="page-number">05 / 08</div>
+
+<h2>
+Little things.
+</h2>
+
+<p class="subtitle">
+Things nobody else would understand.
+</p>
+
+<div class="object">
+
+<img src="IMG-20250207_224324.jpg">
+
+<div class="object-caption">
+A rubber band you gave me.
+</div>
+
+</div>
+
+<p class="story">
+
+I know this is such a tiny thing.
+
+<br><br>
+
+But somehow,
+I still have it.
+
+<br><br>
+
+Maybe that's the funny thing about memories.
+Sometimes the smallest things
+end up surviving the longest.
+
+</p>
+
+<button class="next"
+onclick="document.getElementById('page6').scrollIntoView({behavior:'smooth'})">
+One last thing →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 6 -->
+
+<section class="page">
+
+<div class="paper object-page">
+
+<div class="page-number">06 / 08</div>
+
+<h2>
+A letter.
+</h2>
+
+<p class="subtitle">
+Something you wrote that I couldn't bring myself to lose.
+</p>
+
+<div class="object">
+
+<img src="IMG-20250207_224625.jpg">
+
+<div class="object-caption">
+Your last letter to me. 💌
+</div>
+
+</div>
+
+<p class="story">
+
+I don't think you realise
+how much meaning ordinary things
+can hold when they're connected to someone.
+
+</p>
+
+<button class="next"
+onclick="document.getElementById('page7').scrollIntoView({behavior:'smooth'})">
+And then life happened →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 7 -->
+
+<section class="page" id="page7">
+
+<div class="paper">
+
+<div class="page-number">07 / 08</div>
+
+<h2>
+Different lives.
+</h2>
+
+<div class="story">
+
+<p>
+We left the hostel.
+Life got complicated.
+NEET happened.
+Stress happened.
+You went back to hostel.
+I was doing things online.
+</p>
+
+<br>
+
+<p>
+And for a while,
+we weren't the same two girls
+sharing Room 213 every day.
+</p>
+
+<br>
+
+<p>
+But I still missed you.
+</p>
+
+<br>
+
+<p>
+Then somehow,
+you wished me on my birthday.
+</p>
+
+<br>
+
+<p class="highlight">
+And I was on cloud nine.
+</p>
+
+<br>
+
+<p>
+Later, I came to Russia.
+You started college.
+Life took us in completely different directions.
+</p>
+
+<br>
+
+<p>
+But somehow,
+we found each other again.
+</p>
+
+</div>
+
+<button class="next"
+onclick="document.getElementById('page8').scrollIntoView({behavior:'smooth'})">
+And then… 15 minutes. →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 8 -->
+
+<section class="page">
+
+<div class="paper">
+
+<div class="page-number">08 / 08</div>
+
+<h2>
+15 minutes.
+</h2>
+
+<p class="story">
+
+I came to your college just to see you.
+
+<br><br>
+
+We had barely any time.
+
+<br>
+
+But somehow,
+we both had tears in our eyes.
+
+<br><br>
+
+After everything,
+there we were again.
+
+</p>
+
+<div class="memory-grid">
+
+<div class="polaroid">
+<img src="IMG-20260719-WA0002.jpg">
+<p>We found our way back. ♡</p>
+</div>
+
+<div class="polaroid">
+<img src="IMG-20260719-WA0005.jpg">
+<p>Just 15 minutes.</p>
+</div>
+
+</div>
+
+<div class="video-wrap">
+
+<video controls playsinline>
+<source src="VID-20260719-WA0019.mp4" type="video/mp4">
+Your browser does not support video.
+</video>
+
+</div>
+
+<button class="next"
+onclick="document.getElementById('final').scrollIntoView({behavior:'smooth'})">
+One last page →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="page final" id="final">
+
+<div class="paper">
+
+<div class="small-title">
+WELCOME TO YOUR TWENTIES
+</div>
+
+<div class="twenty">
+20
+</div>
+
+<div class="final-message">
+
+<p>
+We were once just two girls
+in Room 213.
+</p>
+
+<br>
+
+<p>
+Now we're living completely different lives,
+in completely different places…
+</p>
+
+<br>
+
+<p>
+and somehow,
+you're still one of my favourite pieces of home.
+</p>
+
+<br><br>
+
+<p>
+The girl who cried every morning.
+<br>
+The girl whose tiny ponytail I wouldn't stop pulling.
+<br>
+The girl I fought with over the stupidest things.
+<br>
+The girl who refused to help me pack.
+<br>
+The girl who gave me a tiny pink keychain anyway.
+</p>
+
+<br>
+
+<p>
+My roommate.
+<br>
+My headache.
+<br>
+My Deepa.
+</p>
+
+<br><br>
+
+<p>
+<strong>
+Happy 20th Birthday, Deepa. ❤️
+</strong>
+</p>
+
+<br>
+
+<p>
+Here's to everything we've already been through,
+and everything we haven't lived yet.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =========================
+   OPEN THE MEMORY BOOK
+========================= */
+
+function openBook() {
+
+    const opening = document.getElementById("opening");
+    const book = document.getElementById("book");
+    const music = document.getElementById("music");
+    const musicButton = document.getElementById("musicButton");
+
+    /*
+       Start the song at 3:57
+       3 minutes 57 seconds = 237 seconds
+    */
+
+    music.currentTime = 237;
+
+    music.play().catch(() => {
+        console.log("Music needs another tap to play.");
+    });
+
+    opening.classList.add("hide");
+    book.classList.add("show");
+    musicButton.style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+function toggleMusic() {
+
+    const music = document.getElementById("music");
+
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+</script>
+
+</body>
+</html>
