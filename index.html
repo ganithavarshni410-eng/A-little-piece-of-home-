@@ -4,393 +4,901 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For My Joju 🧸❤️</title>
+<title>A Little Piece of Home ♡</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    background: #f8e9e5;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,.8), transparent 25%),
+        radial-gradient(circle at 90% 20%, rgba(255,190,205,.35), transparent 25%),
+        #f7e7e5;
+    color: #49363a;
     font-family: Georgia, "Times New Roman", serif;
-    color: #542d35;
     overflow-x: hidden;
 }
 
-/* OPENING SCREEN */
+/* =========================
+   OPENING
+========================= */
 
 #opening {
     position: fixed;
     inset: 0;
-    z-index: 1000;
-    background:
-        radial-gradient(circle at 20% 20%, #fff6f3, transparent 35%),
-        radial-gradient(circle at 80% 80%, #f3cdd1, transparent 35%),
-        #f8e9e5;
+    z-index: 9999;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
+
+    padding: 22px;
+
+    background:
+        radial-gradient(circle at 20% 15%, #fff9f5, transparent 30%),
+        radial-gradient(circle at 85% 80%, #f4cdd4, transparent 35%),
+        #f6e5e2;
+}
+
+.open-paper {
+    position: relative;
+    width: min(520px, 100%);
+    padding: 48px 28px 42px;
+
+    background: #fffaf3;
+
+    border: 1px solid #e7cbc7;
+
+    box-shadow:
+        0 25px 60px rgba(90,55,55,.18),
+        8px 8px 0 rgba(211,157,164,.22);
+
+    transform: rotate(-1deg);
+
     text-align: center;
+
+    animation: paperAppear 1s ease;
 }
 
-.open-card {
-    max-width: 500px;
-    width: 100%;
-    padding: 45px 28px;
-    background: rgba(255,255,255,0.78);
-    border: 1px solid #e8c4c5;
-    border-radius: 25px;
-    box-shadow: 0 20px 60px rgba(90,45,53,0.15);
-    animation: appear 1.5s ease;
+.open-paper::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20%;
+    width: 110px;
+    height: 28px;
+    background: rgba(238,181,188,.55);
+    transform: rotate(-4deg);
 }
 
-.open-card .tiny {
+.open-paper::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    right: 15%;
+    width: 95px;
+    height: 25px;
+    background: rgba(239,198,155,.55);
+    transform: rotate(5deg);
+}
+
+.open-small {
+    color: #a26a73;
     font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #9b626b;
 }
 
-.open-card h1 {
-    font-size: clamp(34px, 9vw, 55px);
+.open-paper h1 {
     margin: 18px 0;
-    color: #743f49;
+    color: #744650;
+    font-size: clamp(35px, 10vw, 58px);
+    line-height: 1.05;
 }
 
-.open-card p {
+.open-paper h2 {
+    margin: 5px 0 25px;
+    font-weight: normal;
+    color: #875861;
+}
+
+.open-paper p {
     line-height: 1.8;
-    font-size: 17px;
+}
+
+.open-heart {
+    font-size: 42px;
+    margin-bottom: 4px;
+    animation: heartbeat 1.5s infinite;
 }
 
 .open-btn {
-    margin-top: 25px;
-    padding: 15px 25px;
-    border: none;
+    margin-top: 22px;
+
+    border: 0;
     border-radius: 30px;
-    background: #9b5964;
+
+    padding: 14px 26px;
+
+    background: #a45d69;
     color: white;
+
     font-family: inherit;
     font-size: 16px;
+
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(100,50,60,0.2);
+
+    box-shadow: 0 8px 20px rgba(110,55,65,.2);
+
+    transition: .25s;
 }
 
-.open-btn:active {
-    transform: scale(0.96);
+.open-btn:hover {
+    transform: translateY(-2px) scale(1.02);
 }
 
-/* BOOK */
+/* =========================
+   BOOK
+========================= */
 
 #book {
     display: none;
-    min-height: 100vh;
-    padding: 25px 15px 90px;
+    padding: 35px 14px 100px;
 }
 
-.book-container {
-    width: 100%;
-    max-width: 720px;
+.book {
+    width: min(760px, 100%);
     margin: auto;
 }
 
+/* =========================
+   PAGE
+========================= */
+
 .page {
     display: none;
-    background:
-        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
-        #fffaf3;
 
-    border: 1px solid #e5cfc1;
-    border-radius: 10px;
-    padding: 28px 22px;
-    min-height: 75vh;
+    position: relative;
+
+    min-height: 650px;
+
+    padding: 35px 22px 45px;
+
+    background:
+        linear-gradient(rgba(255,255,255,.82), rgba(255,255,255,.82)),
+        #fff8ee;
+
+    border: 1px solid #e6ccc4;
 
     box-shadow:
-        0 15px 45px rgba(80,45,40,0.16),
-        inset 0 0 50px rgba(200,160,130,0.08);
+        0 18px 50px rgba(75,45,45,.16),
+        8px 8px 0 rgba(210,160,163,.15);
 
-    animation: pageIn 0.5s ease;
+    animation: pageIn .55s ease;
+
+    overflow: hidden;
 }
 
 .page.active {
     display: block;
 }
 
+/* tiny decorative paper dots */
+
+.page::before {
+    content: "♡   ✦   ♡";
+    position: absolute;
+    top: 10px;
+    right: 17px;
+
+    color: #e49aa7;
+    font-size: 14px;
+    letter-spacing: 5px;
+}
+
 .page-number {
     text-align: center;
-    font-size: 12px;
-    color: #a67b77;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
+    color: #ae777e;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
 }
 
 .page h1 {
     text-align: center;
-    color: #713e48;
-    font-size: clamp(27px, 7vw, 42px);
-    margin: 10px 0 20px;
+    color: #754650;
+
+    font-size: clamp(29px, 8vw, 46px);
+
+    margin: 8px 0 22px;
 }
 
 .page h2 {
     text-align: center;
-    color: #88535b;
+    color: #895b63;
 }
 
 .page p {
-    font-size: 16px;
-    line-height: 1.85;
+    max-width: 610px;
+    margin: 16px auto;
+
     text-align: center;
-    margin: 18px auto;
-    max-width: 600px;
+
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 .highlight {
+    color: #8b4e5a;
     font-style: italic;
-    color: #814a55;
     font-size: 18px !important;
 }
 
-.divider {
-    text-align: center;
-    margin: 25px 0;
-    font-size: 24px;
+/* =========================
+   TAPE
+========================= */
+
+.tape {
+    position: absolute;
+
+    width: 90px;
+    height: 25px;
+
+    background: rgba(238,190,170,.55);
+
+    z-index: 5;
+
+    box-shadow: 0 1px 3px rgba(80,50,40,.08);
 }
 
-/* PHOTOS */
+.tape.one {
+    top: -7px;
+    left: 35%;
+    transform: rotate(-4deg);
+}
 
-.photo {
+.tape.two {
+    top: -6px;
+    right: 25%;
+    transform: rotate(6deg);
+}
+
+.tape.three {
+    bottom: -8px;
+    left: 25%;
+    transform: rotate(5deg);
+}
+
+/* =========================
+   PHOTO POLAROID
+========================= */
+
+.photo-card {
+    position: relative;
+
+    width: min(520px, 95%);
+
+    margin: 30px auto;
+
+    padding: 10px 10px 20px;
+
+    background: white;
+
+    box-shadow: 0 10px 25px rgba(60,40,40,.18);
+
+    transform: rotate(-1.5deg);
+}
+
+.photo-card:nth-of-type(even) {
+    transform: rotate(1.3deg);
+}
+
+.photo-card img {
     display: block;
+
     width: 100%;
     height: auto;
-    max-height: 70vh;
+
+    max-height: 65vh;
+
     object-fit: contain;
-    border-radius: 10px;
-    margin: 20px auto;
-    border: 7px solid #fff;
-    box-shadow: 0 8px 25px rgba(60,35,30,0.18);
 }
 
 .photo-caption {
-    text-align: center;
-    font-style: italic;
-    color: #94656b;
-    margin-top: -8px;
-}
-
-.photo-row {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-}
-
-.memory-photo {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    border: 6px solid white;
-    box-shadow: 0 7px 20px rgba(60,35,30,0.15);
-}
-
-/* KEEPSAKES */
-
-.keepsake {
-    margin: 25px auto;
-}
-
-.keepsake img {
-    width: 100%;
-    max-height: 55vh;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: auto;
-    border-radius: 10px;
-    border: 6px solid white;
-    box-shadow: 0 8px 20px rgba(60,35,30,0.15);
-}
-
-.keepsake p {
-    font-size: 14px;
     margin-top: 10px;
-}
 
-/* VIDEO */
-
-.video-wrap {
-    margin: 25px auto;
-    width: 100%;
-}
-
-.video-wrap video {
-    width: 100%;
-    max-height: 70vh;
-    border-radius: 12px;
-    background: #1d1114;
-    box-shadow: 0 10px 25px rgba(50,25,30,0.2);
-}
-
-/* SIGNATURE */
-
-.signature {
     text-align: center;
-    font-size: 24px;
+
+    font-size: 14px;
+    color: #76565a;
     font-style: italic;
-    color: #793e49;
-    margin-top: 30px;
 }
 
-/* NAVIGATION */
+/* =========================
+   STICKY NOTES
+========================= */
 
-.navigation {
+.notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    max-width: 650px;
+
+    margin: 30px auto;
+}
+
+.note {
+    position: relative;
+
+    min-height: 105px;
+
+    padding: 18px 13px 15px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    text-align: center;
+
+    color: #574348;
+
+    font-size: 14px;
+    line-height: 1.45;
+
+    box-shadow:
+        0 7px 13px rgba(70,45,45,.13);
+
+    transform: rotate(-2deg);
+
+    transition: .25s;
+}
+
+.note:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.note:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.note:nth-child(4) {
+    transform: rotate(3deg);
+}
+
+.note:nth-child(5) {
+    transform: rotate(-3deg);
+}
+
+.note:nth-child(6) {
+    transform: rotate(1deg);
+}
+
+.note:hover {
+    transform: rotate(0) translateY(-4px);
+}
+
+.note::before {
+    content: "";
+    position: absolute;
+
+    top: -7px;
+    left: 50%;
+
+    width: 50px;
+    height: 16px;
+
+    background: rgba(255,255,255,.48);
+
+    transform: translateX(-50%) rotate(-2deg);
+}
+
+.pink {
+    background: #f8c9d0;
+}
+
+.yellow {
+    background: #f7e4a9;
+}
+
+.green {
+    background: #cfe6cf;
+}
+
+.blue {
+    background: #c8dfeb;
+}
+
+.lilac {
+    background: #ddd0ed;
+}
+
+.peach {
+    background: #f6cdb7;
+}
+
+/* =========================
+   KEEPSAKES
+========================= */
+
+.keepsakes {
+    position: relative;
+
+    max-width: 600px;
+
+    margin: 30px auto;
+}
+
+.keep {
+    position: relative;
+
+    background: white;
+
+    padding: 9px 9px 18px;
+
+    margin: 22px auto;
+
+    width: 80%;
+
+    box-shadow: 0 9px 22px rgba(60,40,40,.15);
+
+    transform: rotate(-2deg);
+}
+
+.keep:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.keep:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.keep img {
+    width: 100%;
+    height: auto;
+    max-height: 45vh;
+    object-fit: contain;
+    display: block;
+}
+
+.keep p {
+    font-size: 13px;
+    margin: 8px 0 0;
+}
+
+/* =========================
+   NIGHT PAGE
+========================= */
+
+.night {
+    background:
+        radial-gradient(circle at 75% 15%, rgba(255,255,255,.15), transparent 4%),
+        radial-gradient(circle at 25% 30%, rgba(255,255,255,.12), transparent 3%),
+        linear-gradient(145deg, #171820, #282333);
+
+    color: #eee;
+
+    border-color: #252232;
+}
+
+.night h1,
+.night p,
+.night .page-number {
+    color: #f7e9eb;
+}
+
+.night .highlight {
+    color: #f4b9c5;
+}
+
+.night .sticky-night {
+    max-width: 500px;
+    margin: 25px auto;
+
+    padding: 18px;
+
+    background: #f1d9a6;
+    color: #493c37;
+
+    transform: rotate(-2deg);
+
+    box-shadow: 0 10px 20px rgba(0,0,0,.3);
+}
+
+.clock {
+    text-align: center;
+
+    font-size: 43px;
+    color: #f5aeba;
+
+    margin: 15px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 30px auto;
+
+    max-width: 650px;
+}
+
+.timeline-item {
+    padding: 12px 10px;
+
+    background: #fff;
+    border: 1px solid #ead6d1;
+
+    box-shadow: 0 5px 13px rgba(60,40,40,.1);
+
+    font-size: 12px;
+
+    transform: rotate(-1deg);
+}
+
+.arrow {
+    color: #c46b78;
+    font-size: 20px;
+}
+
+/* =========================
+   REUNION
+========================= */
+
+.reunion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
     gap: 15px;
-    margin-top: 18px;
+
+    max-width: 650px;
+
+    margin: 25px auto;
+}
+
+.reunion-photo {
+    width: 100%;
+    height: auto;
+
+    max-height: 55vh;
+
+    object-fit: contain;
+
+    background: white;
+
+    padding: 8px;
+
+    box-shadow: 0 9px 20px rgba(60,40,40,.16);
+}
+
+.reunion-time {
+    text-align: center;
+
+    font-size: 18px;
+
+    color: #9a5965;
+
+    letter-spacing: 1px;
+}
+
+.video-box {
+    width: min(650px, 100%);
+
+    margin: 25px auto;
+
+    padding: 8px;
+
+    background: white;
+
+    box-shadow: 0 10px 25px rgba(50,35,35,.17);
+
+    transform: rotate(.5deg);
+}
+
+.video-box video {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 3px;
+
+    background: black;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final-page {
+    text-align: center;
+}
+
+.final-page .little {
+    font-size: 14px;
+    color: #a16b73;
+}
+
+.final-hearts {
+    font-size: 30px;
+    letter-spacing: 12px;
+    margin: 20px 0;
+}
+
+.signature {
+    margin-top: 30px;
+
+    font-size: 22px;
+
+    color: #7d4852;
+
+    font-style: italic;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 20px auto 0;
 }
 
 .navigation button {
-    border: none;
-    background: #87505a;
-    color: white;
+    border: 0;
+
+    padding: 11px 19px;
+
     border-radius: 25px;
-    padding: 11px 20px;
+
+    background: #965763;
+    color: white;
+
     font-family: inherit;
+
     cursor: pointer;
 }
 
 .navigation button:disabled {
-    opacity: 0.35;
+    opacity: .35;
 }
 
 #counter {
-    color: #81545b;
+    color: #865961;
     font-size: 13px;
 }
 
-/* MUSIC BUTTON */
+/* =========================
+   MUSIC
+========================= */
 
 #musicBtn {
     position: fixed;
+
     right: 15px;
     bottom: 15px;
-    z-index: 50;
+
+    z-index: 500;
 
     width: 48px;
     height: 48px;
+
+    border: 0;
     border-radius: 50%;
-    border: none;
 
-    background: #87505a;
+    background: #965763;
     color: white;
-    font-size: 20px;
-    cursor: pointer;
 
-    box-shadow: 0 6px 20px rgba(60,30,35,0.25);
+    font-size: 19px;
+
+    box-shadow: 0 7px 18px rgba(70,40,45,.22);
 }
 
-/* FLOATING DECORATIONS */
+/* =========================
+   FLYING HEARTS
+========================= */
 
-.float {
+.flying {
     position: fixed;
-    pointer-events: none;
-    z-index: 20;
-    animation: floatUp linear forwards;
-}
 
-.heart {
-    color: #b95768;
+    z-index: 100;
+
+    pointer-events: none;
+
+    color: #d85d73;
+
+    animation: fly linear forwards;
+
+    text-shadow: 0 2px 5px rgba(100,40,50,.12);
 }
 
 .butterfly {
-    color: #a86c7a;
+    color: #b4778d;
 }
 
-/* ANIMATIONS */
+@keyframes fly {
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.97);
-    }
+    0% {
+        transform:
+            translateY(110vh)
+            translateX(0)
+            rotate(0deg)
+            scale(.7);
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes pageIn {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes floatUp {
-    from {
-        transform: translateY(100vh) rotate(0deg);
         opacity: 0;
     }
 
     15% {
-        opacity: 0.9;
+        opacity: .85;
     }
 
-    to {
-        transform: translateY(-15vh) rotate(360deg);
+    50% {
+        transform:
+            translateY(50vh)
+            translateX(35px)
+            rotate(100deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(-15vh)
+            translateX(-30px)
+            rotate(260deg)
+            scale(.8);
+
         opacity: 0;
     }
 }
 
-@media (min-width: 650px) {
+@keyframes heartbeat {
 
-    .page {
-        padding: 40px;
+    0%,100% {
+        transform: scale(1);
     }
 
-    .photo-row {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .photo-row .memory-photo {
-        width: 50%;
+    50% {
+        transform: scale(1.12);
     }
 }
+
+@keyframes paperAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) rotate(-3deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(-1deg);
+    }
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(20px) rotate(.5deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 550px) {
+
+    #book {
+        padding: 18px 9px 90px;
+    }
+
+    .page {
+        padding: 30px 15px 35px;
+        min-height: 620px;
+    }
+
+    .notes {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .note {
+        min-height: 100px;
+        font-size: 12px;
+        padding: 14px 8px;
+    }
+
+    .reunion-grid {
+        gap: 8px;
+    }
+
+    .timeline {
+        gap: 6px;
+    }
+
+    .timeline-item {
+        font-size: 10px;
+        padding: 9px 7px;
+    }
+
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media(max-width: 360px) {
+
+    .notes {
+        grid-template-columns: 1fr;
+    }
+
+    .page h1 {
+        font-size: 29px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- OPENING -->
+
+<!-- ==================================
+     OPENING
+================================== -->
 
 <section id="opening">
 
-    <div class="open-card">
+    <div class="open-paper">
 
-        <div class="tiny">
-            A little birthday memory book for my Joju
+        <div class="open-small">
+            A little birthday memory book
+        </div>
+
+        <div class="open-heart">
+            ♡
         </div>
 
         <h1>
-            🧸❤️
+            For my Joju
         </h1>
 
-        <h1>
-            To my Joju,
-            <br>
-            my teddy bear from Room 213…
-        </h1>
+        <h2>
+            the girl from Room 213…
+        </h2>
 
         <p>
             Some memories disappear with time.
@@ -398,12 +906,8 @@ body {
             Some become a little piece of home.
         </p>
 
-        <p>
-            This one is for you.
-        </p>
-
         <button class="open-btn" onclick="openBook()">
-            Open your memory book ♡
+            Open the memories ♡
         </button>
 
     </div>
@@ -411,286 +915,398 @@ body {
 </section>
 
 
-<!-- BOOK -->
+<!-- ==================================
+     BOOK
+================================== -->
 
 <main id="book">
 
-<div class="book-container">
+<div class="book">
 
 
-<!-- PAGE 1 -->
+<!-- ================= PAGE 1 ================= -->
 
 <section class="page active">
 
-<div class="page-number">01 · THE BEGINNING</div>
+<div class="tape one"></div>
+
+<div class="page-number">
+    01 · THE BEGINNING
+</div>
 
 <h1>
-    Room 213 🧸
+    Room 213
 </h1>
 
-<img
-    src="./IMG-20260501-WA0105.jpg"
-    class="photo"
-    alt="Deepa"
->
+<div class="photo-card">
 
-<p>
-    Before you became my Joju,
-    you were simply the girl in Room 213.
-</p>
+    <div class="tape two"></div>
 
-<p>
-    Two girls having their first hostel experience,
-    surrounded by nine other girls from different places.
-</p>
+    <img
+        src="./IMG-20260501-WA0105.jpg"
+        alt="Deepa"
+    >
 
-<p>
-    And somehow,
-    among all those people,
-    our story began there.
-</p>
-
-<p class="highlight">
-    Little did I know that the crying girl in Room 213
-    would become my teddy bear. 🧸
-</p>
-
-</section>
-
-
-<!-- PAGE 2 -->
-
-<section class="page">
-
-<div class="page-number">02 · FIRST IMPRESSIONS</div>
-
-<h1>
-    The crying girl 😂
-</h1>
-
-<img
-    src="./IMG-20250530_165610.jpg"
-    class="photo"
-    alt="Our hostel memory"
->
-
-<p>
-    You had short hair.
-</p>
-
-<p>
-    And you were the girl who always seemed to cry
-    because you missed home.
-</p>
-
-<p>
-    I would come back from the common bathroom
-    after bathing and hear you crying.
-</p>
-
-<p>
-    That was honestly one of my first memories of you.
-</p>
-
-<p>
-    Funny how the person I barely knew then
-    became someone I would miss so much later.
-</p>
-
-</section>
-
-
-<!-- PAGE 3 -->
-
-<section class="page">
-
-<div class="page-number">03 · 2 AM</div>
-
-<h1>
-    That night
-</h1>
-
-<p>
-    In 11th grade,
-    we were mostly just roommates.
-</p>
-
-<p>
-    But 12th grade changed everything.
-</p>
-
-<p>
-    Same class.
-    Same room.
-    More time together.
-</p>
-
-<p>
-    I would sit with you,
-    annoy you,
-    get possessive over you,
-    and somehow we became inseparable.
-</p>
-
-<p>
-    We fought over the tiniest things too.
-    There was even that one month
-    when we didn't speak.
-</p>
-
-<p>
-    But one night,
-    around 2 AM,
-    you woke me because your head was hurting badly.
-</p>
-
-<p>
-    We walked from the third floor
-    all the way down to the sick room.
-</p>
-
-<p>
-    I stayed awake until you slept.
-</p>
-
-<p class="highlight">
-    And somewhere between that walk
-    and waiting beside you,
-    I realised just how much you meant to me.
-</p>
-
-</section>
-
-
-<!-- PAGE 4 -->
-
-<section class="page">
-
-<div class="page-number">04 · LITTLE THINGS</div>
-
-<h1>
-    Things I couldn't throw away
-</h1>
-
-<div class="keepsake">
-
-<img
-    src="./IMG-20250207_224146.jpg"
-    alt="Pink keychain"
->
-
-<p>
-    The tiny pink keychain you gave me. 🎀
-</p>
+    <div class="photo-caption">
+        The girl from Room 213 ♡
+    </div>
 
 </div>
 
-<div class="keepsake">
-
-<img
-    src="./IMG-20250207_224324.jpg"
-    alt="Rubber band"
->
+<p>
+    11th grade.
+    First hostel.
+    10 girls in one room.
+</p>
 
 <p>
-    The rubber band you gave me.
-    Yes, I actually kept it. 🥹
+    And then there was you.
 </p>
+
+<div class="notes">
+
+    <div class="note pink">
+        Short hair.
+        Big feelings.
+        And a lot of tears. 😂
+    </div>
+
+    <div class="note yellow">
+        I used to come back from the bathroom
+        and hear you crying.
+    </div>
 
 </div>
 
-<div class="keepsake">
-
-<img
-    src="./IMG-20250207_224625.jpg"
-    alt="Last letter"
->
-
 <p>
-    And the last letter you wrote.
+    At that point, I definitely didn't know
+    you'd become one of my favourite people.
 </p>
 
 <p class="highlight">
-    Maybe it's silly.
-    Maybe it's a little cringe.
-    But these tiny things hold pieces of you.
+    Little did I know that the crying girl
+    in Room 213 would become my Joju. ♡
 </p>
+
+</section>
+
+
+<!-- ================= PAGE 2 ================= -->
+
+<section class="page">
+
+<div class="page-number">
+    02 · THINGS I REMEMBER FOR NO REASON
+</div>
+
+<h1>
+    Honestly… we were something. 😂
+</h1>
+
+<div class="photo-card">
+
+    <div class="tape one"></div>
+
+    <img
+        src="./IMG_20250530_165610.jpg"
+        alt="Ponytail memory"
+    >
+
+</div>
+
+<div class="notes">
+
+    <div class="note pink">
+        Me pulling your tiny ponytail.
+    </div>
+
+    <div class="note yellow">
+        You shouting at me for it. 😂
+    </div>
+
+    <div class="note blue">
+        “Thoongitiyaa?” at night.
+    </div>
+
+    <div class="note lilac">
+        That one month
+        we didn't talk. 💀
+    </div>
+
+    <div class="note peach">
+        Me writing “Deepa”
+        instead of “deep water”
+        in an exam.
+    </div>
+
+    <div class="note green">
+        And somehow…
+        we survived each other.
+    </div>
 
 </div>
 
 </section>
 
 
-<!-- PAGE 5 -->
+<!-- ================= PAGE 3 ================= -->
 
-<section class="page">
+<section class="page night">
 
-<div class="page-number">05 · OUR LITTLE PROOF</div>
+<div class="page-number">
+    03 · 2 AM
+</div>
+
+<div class="clock">
+    2:00 AM
+</div>
 
 <h1>
-    One tiny piece of us
+    “My head hurts.”
 </h1>
 
-<img
-    src="./IMG-20250711-WA0002.jpg"
-    class="photo"
-    alt="Our fingerprints"
->
+<p>
+    So there we were —
+    third floor → ground floor → sick room.
+</p>
+
+<div class="sticky-night">
+    <strong>
+        The 2 AM adventure:
+    </strong>
+
+    <br><br>
+
+    3rd floor
+    ↓
+    stairs
+    ↓
+    ground floor
+    ↓
+    sick room
+</div>
 
 <p>
-    We didn't have many photos together.
+    You went back to sleep.
 </p>
 
 <p>
-    But we had this.
-</p>
-
-<p>
-    Two fingerprints from 12th grade,
-    from a time when we had no idea
-    how many places life would take us.
+    I stayed awake until you did.
 </p>
 
 <p class="highlight">
-    Somehow, this little picture became
-    one of my favourite pieces of us.
+    One of those tiny moments
+    I still remember.
 </p>
 
 </section>
 
 
-<!-- PAGE 6 -->
+<!-- ================= PAGE 4 ================= -->
 
 <section class="page">
 
-<div class="page-number">06 · DISTANCE</div>
+<div class="page-number">
+    04 · THE THINGS I KEPT
+</div>
 
 <h1>
-    And then life happened…
+    Things I couldn't throw away ♡
 </h1>
 
-<img
-    src="./IMG-20260501-WA0105.jpg"
-    class="photo"
-    alt="Deepa"
->
+<div class="keepsakes">
+
+    <div class="keep">
+
+        <div class="tape one"></div>
+
+        <img
+            src="./IMG_20250207_224146.jpg"
+            alt="Pink keychain"
+        >
+
+        <p>
+            The tiny pink keychain you gave me.
+        </p>
+
+    </div>
+
+
+    <div class="keep">
+
+        <div class="tape two"></div>
+
+        <img
+            src="./IMG_20250207_224324.jpg"
+            alt="Rubber band"
+        >
+
+        <p>
+            That rubber band.
+            Yes, I actually kept it. 😂
+        </p>
+
+    </div>
+
+
+    <div class="keep">
+
+        <div class="tape one"></div>
+
+        <img
+            src="./IMG_20250207_224625.jpg"
+            alt="Last letter"
+        >
+
+        <p>
+            The last letter.
+            You have no idea how many times
+            I've read it.
+        </p>
+
+    </div>
+
+</div>
+
+<p class="highlight">
+    Maybe it's a little silly.
+    But these tiny things somehow kept pieces
+    of those days with me.
+</p>
+
+</section>
+
+
+<!-- ================= PAGE 5 ================= -->
+
+<section class="page">
+
+<div class="page-number">
+    05 · ONE LITTLE PIECE OF US
+</div>
+
+<h1>
+    Your fingerprint
+</h1>
+
+<div class="photo-card">
+
+    <div class="tape one"></div>
+
+    <img
+        src="./IMG-20250711-WA0002.jpg"
+        alt="Fingerprints"
+    >
+
+</div>
+
+<div class="notes">
+
+    <div class="note yellow">
+        12th grade.
+    </div>
+
+    <div class="note pink">
+        Before Russia.
+    </div>
+
+    <div class="note blue">
+        Before college.
+    </div>
+
+    <div class="note green">
+        Before everything changed.
+    </div>
+
+</div>
+
+<p>
+    We didn't know where life was taking us.
+</p>
+
+<p class="highlight">
+    We just left this tiny little proof
+    that we were there.
+</p>
+
+</section>
+
+
+<!-- ================= PAGE 6 ================= -->
+
+<section class="page">
+
+<div class="page-number">
+    06 · DISTANCE
+</div>
+
+<h1>
+    Then life happened…
+</h1>
+
+<div class="timeline">
+
+    <div class="timeline-item">
+        🏫 Hostel
+    </div>
+
+    <span class="arrow">→</span>
+
+    <div class="timeline-item">
+        📚 NEET year
+    </div>
+
+    <span class="arrow">→</span>
+
+    <div class="timeline-item">
+        💻 My online classes
+    </div>
+
+    <span class="arrow">→</span>
+
+    <div class="timeline-item">
+        🏫 Your hostel
+    </div>
+
+    <span class="arrow">→</span>
+
+    <div class="timeline-item">
+        🌍 Distance
+    </div>
+
+    <span class="arrow">→</span>
+
+    <div class="timeline-item">
+        ✈️ Russia
+    </div>
+
+    <span class="arrow">→</span>
+
+    <div class="timeline-item">
+        🎓 College
+    </div>
+
+    <span class="arrow">→</span>
+
+    <div class="timeline-item">
+        ❤️ Us again
+    </div>
+
+</div>
 
 <p>
     I was scared of losing you after hostel.
 </p>
 
 <p>
-    I remember wondering
-    whether we would still be the same
-    once we left.
+    I remember wondering whether
+    we'd still be the same once we left.
 </p>
 
 <p>
     Then came the integrated NEET course,
-    your hostel,
-    my online classes,
-    and eventually…
-    distance.
+    your hostel, my online classes,
+    and eventually… distance.
 </p>
 
 <p>
@@ -698,7 +1314,7 @@ body {
 </p>
 
 <p>
-    But then you wished me on my birthday.
+    Then you wished me on my birthday.
 </p>
 
 <p>
@@ -706,7 +1322,7 @@ body {
 </p>
 
 <p>
-    I had missed my Joju more than I knew how to say.
+    I had missed you more than I knew how to say.
 </p>
 
 <p>
@@ -718,35 +1334,44 @@ body {
 </section>
 
 
-<!-- PAGE 7 -->
+<!-- ================= PAGE 7 ================= -->
 
 <section class="page">
 
-<div class="page-number">07 · FIFTEEN MINUTES</div>
+<div class="page-number">
+    07 · FIFTEEN MINUTES
+</div>
 
 <h1>
-    Just 15 minutes
+    The 15 minute reunion
 </h1>
 
-<div class="photo-row">
+<div class="reunion-time">
+    15:00 → 14:32 → 11:08 → 07:41 → 03:12 → 00:15
+</div>
 
-<img
-    src="./IMG-20260719-WA0002.jpg"
-    class="memory-photo"
-    alt="College reunion"
->
+<p>
+    That's all the time we had.
+</p>
 
-<img
-    src="./IMG-20260719-WA0005.jpg"
-    class="memory-photo"
-    alt="College reunion"
->
+<div class="reunion-grid">
+
+    <img
+        src="./IMG-20260719-WA0002.jpg"
+        class="reunion-photo"
+        alt="College reunion"
+    >
+
+    <img
+        src="./IMG-20260719-WA0005.jpg"
+        class="reunion-photo"
+        alt="College reunion"
+    >
 
 </div>
 
 <p>
-    During vacation,
-    I came to your college.
+    During vacation, I came to your college.
 </p>
 
 <p>
@@ -754,49 +1379,53 @@ body {
 </p>
 
 <p>
-    But both of us had tears in our eyes.
+    Both of us had tears in our eyes.
 </p>
 
 <p>
-    We took these photos,
-    stood together,
-    talked,
+    We talked, took photos,
     and somehow those few minutes
-    felt so much bigger than they actually were.
+    felt much bigger than they actually were.
 </p>
 
 <p class="highlight">
-    Sometimes you don't need a whole day
-    with someone to feel how much they mean to you.
+    Sometimes 15 minutes is enough
+    to make you miss someone all over again. ♡
 </p>
 
 </section>
 
 
-<!-- PAGE 8 -->
+<!-- ================= PAGE 8 ================= -->
 
 <section class="page">
 
-<div class="page-number">08 · ONE MORE MEMORY</div>
+<div class="page-number">
+    08 · ONE MORE MEMORY
+</div>
 
 <h1>
-    Us, for a little while ❤️
+    A tiny moving memory
 </h1>
 
-<div class="video-wrap">
+<div class="video-box">
 
-<video
-    controls
-    playsinline
-    preload="metadata"
->
-    <source
-        src="./VID-20260719-WA0019.mp4"
-        type="video/mp4"
+    <div class="tape one"></div>
+
+    <video
+        controls
+        playsinline
+        preload="metadata"
     >
 
-    Your browser does not support this video.
-</video>
+        <source
+            src="./VID-20260719-WA0019.mp4"
+            type="video/mp4"
+        >
+
+        Your browser does not support video.
+
+    </video>
 
 </div>
 
@@ -812,75 +1441,80 @@ body {
 </section>
 
 
-<!-- PAGE 9 -->
+<!-- ================= PAGE 9 ================= -->
 
-<section class="page">
+<section class="page final-page">
 
-<div class="page-number">09 · FOR MY JOJU</div>
+<div class="page-number">
+    09 · FOR YOU
+</div>
+
+<div class="final-hearts">
+    ♡ ♥ ♡
+</div>
 
 <h1>
-    Happy 20th,
-    <br>
-    my Joju 🧸❤️
+    Happy 20th, Joju ❤️
 </h1>
 
 <p>
-    From Room 213 to different cities,
-    different colleges,
-    different lives…
+    We've gone from Room 213,
+    to different colleges,
+    different cities,
+    and somehow still ended up
+    finding our way back to each other.
 </p>
 
 <p>
-    somehow,
-    you're still one of the people
-    who feels like home.
+    We've had fights,
+    stupid moments,
+    long gaps,
+    and way too many memories
+    for the number of photos we actually have. 😂
 </p>
 
-<p>
-    My teddy bear. 🧸
-    <br>
-    My annoying roommate.
-    <br>
-    My fight partner.
-    <br>
-    My Joju.
-</p>
+<div class="notes">
 
-<p>
-    Thank you for every silly fight,
-    every laugh,
-    every little memory,
-    and every moment that somehow stayed with me.
-</p>
+    <div class="note pink">
+        My annoying roommate.
+    </div>
 
-<p>
-    Thank you for being part of
-    one of the most unforgettable chapters
-    of my life.
-</p>
+    <div class="note yellow">
+        My fight partner.
+    </div>
 
-<p>
-    I hope 20 brings you everything
-    your heart has been quietly waiting for.
-</p>
+    <div class="note blue">
+        One of my favourite people.
+    </div>
 
-<p class="highlight">
-    And wherever life takes us,
-    I hope we always find our way back.
-</p>
+    <div class="note green">
+        And yes… my little teddy bear. ♡
+    </div>
 
-<div class="divider">
-    ♡ 🧸 ♡
 </div>
 
 <p>
-    Here's to the girl who started as my roommate
-    and somehow became
-    a little piece of home.
+    I'm really glad I got to grow up with you
+    in a little part of my life.
 </p>
 
+<p>
+    I hope 20 brings you lots of happiness,
+    good people, good memories,
+    and everything you're hoping for.
+</p>
+
+<p class="highlight">
+    Here's to 20.
+    And please remain the same annoying person. 😂❤️
+</p>
+
+<div class="final-hearts">
+    ♡ 🦋 ♡
+</div>
+
 <div class="signature">
-    Happy birthday, Joju 🧸❤️
+    — Ganitha ❤️
 </div>
 
 </section>
@@ -890,17 +1524,23 @@ body {
 
 <div class="navigation">
 
-<button id="prevBtn" onclick="previousPage()">
-    ← Previous
-</button>
+    <button
+        id="prevBtn"
+        onclick="previousPage()"
+    >
+        ← Previous
+    </button>
 
-<span id="counter">
-    1 / 9
-</span>
+    <span id="counter">
+        1 / 9
+    </span>
 
-<button id="nextBtn" onclick="nextPage()">
-    Next →
-</button>
+    <button
+        id="nextBtn"
+        onclick="nextPage()"
+    >
+        Next →
+    </button>
 
 </div>
 
@@ -909,40 +1549,55 @@ body {
 </main>
 
 
-<!-- MUSIC -->
+<!-- ==================================
+     MUSIC
+================================== -->
 
 <audio id="music" preload="auto">
+
     <source
         src="./Neeyum-Naanum.mp3"
         type="audio/mpeg"
     >
+
 </audio>
+
 
 <button
     id="musicBtn"
     onclick="toggleMusic()"
-    aria-label="Music"
 >
     🎵
 </button>
 
 
+<!-- ==================================
+     JAVASCRIPT
+================================== -->
+
 <script>
 
 let currentPage = 0;
 
-const pages = document.querySelectorAll(".page");
+const pages =
+    document.querySelectorAll(".page");
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const counter = document.getElementById("counter");
+const prevBtn =
+    document.getElementById("prevBtn");
 
-const music = document.getElementById("music");
+const nextBtn =
+    document.getElementById("nextBtn");
 
-const START_TIME = 237; // 3:57
+const counter =
+    document.getElementById("counter");
+
+const music =
+    document.getElementById("music");
+
+const START_TIME = 237;
 
 
-/* OPEN BOOK */
+/* OPEN */
 
 function openBook() {
 
@@ -952,7 +1607,7 @@ function openBook() {
 
     startMusic();
 
-    createDecorations();
+    startFlyingHearts();
 }
 
 
@@ -960,27 +1615,29 @@ function openBook() {
 
 function startMusic() {
 
-    function playFromStartPoint() {
+    function playMusic() {
 
         try {
             music.currentTime = START_TIME;
-        } catch (e) {}
+        } catch(e) {}
 
-        music.play().catch(() => {
-            // Browser may block autoplay.
-            // User can use the music button.
-        });
+        music.play().catch(() => {});
     }
 
     if (music.readyState >= 1) {
-        playFromStartPoint();
+
+        playMusic();
+
     } else {
+
         music.addEventListener(
             "loadedmetadata",
-            playFromStartPoint,
+            playMusic,
             { once: true }
         );
+
     }
+
 }
 
 
@@ -1003,7 +1660,7 @@ function toggleMusic() {
 }
 
 
-/* PAGES */
+/* PAGE SYSTEM */
 
 function showPage(index) {
 
@@ -1039,22 +1696,31 @@ function showPage(index) {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
+
+/* NEXT */
 
 function nextPage() {
 
     if (currentPage < pages.length - 1) {
+
         showPage(currentPage + 1);
+
     }
 
 }
 
 
+/* PREVIOUS */
+
 function previousPage() {
 
     if (currentPage > 0) {
+
         showPage(currentPage - 1);
+
     }
 
 }
@@ -1062,91 +1728,118 @@ function previousPage() {
 
 /* KEYBOARD */
 
-document.addEventListener("keydown", function(e) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (e.key === "ArrowRight") {
-        nextPage();
+        if (event.key === "ArrowRight") {
+            nextPage();
+        }
+
+        if (event.key === "ArrowLeft") {
+            previousPage();
+        }
+
     }
-
-    if (e.key === "ArrowLeft") {
-        previousPage();
-    }
-
-});
+);
 
 
 /* SWIPE */
 
-let touchStartX = 0;
-let touchEndX = 0;
+let startX = 0;
+let endX = 0;
 
-document.addEventListener("touchstart", function(e) {
+document.addEventListener(
+    "touchstart",
+    function(event) {
 
-    touchStartX = e.changedTouches[0].screenX;
+        startX =
+            event.changedTouches[0].screenX;
 
-}, { passive: true });
-
-
-document.addEventListener("touchend", function(e) {
-
-    touchEndX = e.changedTouches[0].screenX;
-
-    const difference =
-        touchEndX - touchStartX;
-
-    if (Math.abs(difference) < 50) {
-        return;
-    }
-
-    if (difference < 0) {
-        nextPage();
-    } else {
-        previousPage();
-    }
-
-}, { passive: true });
+    },
+    { passive: true }
+);
 
 
-/* FLOATING HEARTS + BUTTERFLIES */
+document.addEventListener(
+    "touchend",
+    function(event) {
 
-function createDecorations() {
+        endX =
+            event.changedTouches[0].screenX;
 
-    setInterval(() => {
+        const distance =
+            endX - startX;
 
-        const element = document.createElement("div");
+        if (Math.abs(distance) < 50) {
+            return;
+        }
 
-        const isHeart = Math.random() > 0.35;
+        if (distance < 0) {
 
-        element.className =
-            "float " +
-            (isHeart ? "heart" : "butterfly");
+            nextPage();
 
-        element.textContent =
-            isHeart
-                ? "♥"
-                : "🦋";
+        } else {
 
-        element.style.left =
-            Math.random() * 100 + "vw";
+            previousPage();
 
-        element.style.fontSize =
-            (12 + Math.random() * 18) + "px";
+        }
 
-        element.style.animationDuration =
-            (6 + Math.random() * 6) + "s";
+    },
+    { passive: true }
+);
 
-        document.body.appendChild(element);
 
-        setTimeout(() => {
-            element.remove();
-        }, 13000);
+/* FLYING HEARTS */
 
-    }, 900);
+function makeHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    const butterfly =
+        Math.random() < 0.12;
+
+    heart.className =
+        butterfly
+            ? "flying butterfly"
+            : "flying";
+
+    heart.textContent =
+        butterfly
+            ? "🦋"
+            : (Math.random() > .5 ? "♥" : "♡");
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 15) + "px";
+
+    heart.style.animationDuration =
+        (7 + Math.random() * 6) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(
+        () => heart.remove(),
+        14000
+    );
 
 }
 
 
-/* INITIAL STATE */
+function startFlyingHearts() {
+
+    setInterval(
+        makeHeart,
+        650
+    );
+
+}
+
+
+/* INITIAL */
 
 showPage(0);
 
@@ -1154,6 +1847,6 @@ showPage(0);
 
 </body>
 </html>
-
+    
 
     
